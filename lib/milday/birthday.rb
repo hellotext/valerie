@@ -1,3 +1,5 @@
+require 'date'
+
 module Milday
   class Birthday
     def self.from_s(data)
@@ -16,8 +18,29 @@ module Milday
       "BDAY:#{@date}"
     end
     
-    def to_h
-      { date: }
+    def to_date
+      Date.new(year, month, day)
     end
+    
+    def to_h
+      {
+        day:,
+        month:,
+        year:
+      }
+    end
+    
+    private
+      def year
+        @year ||= @date.split('-')[0].to_i
+      end
+    
+      def month
+        @month ||=  @date.split('-')[1].to_i
+      end
+    
+      def day
+        @day ||=  @date.split('-')[-1].to_i
+      end
   end
 end
