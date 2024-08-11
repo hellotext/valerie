@@ -1,8 +1,8 @@
-require 'test_helper'
+require_relative '../test_helper'
 
 class PhoneCollectionTest < Minitest::Test
   def setup
-    @collection = Milday::PhoneCollection.new
+    @collection = Milday::Collection::PhoneCollection.new
   end
   
   def test_add_phone_as_string

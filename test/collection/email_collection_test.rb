@@ -1,8 +1,8 @@
-require_relative 'test_helper'
+require_relative '../test_helper'
 
 class EmailCollectionTest < Minitest::Test
   def setup
-    @collection = Milday::EmailCollection.new
+    @collection = Milday::Collection::EmailCollection.new
   end
   
   def test_add_email_as_string
