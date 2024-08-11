@@ -11,6 +11,8 @@ require_relative 'milday/collection/email_collection'
 require_relative 'milday/collection/address_collection'
 require_relative 'milday/collection/phone_collection'
 
+require_relative 'milday/core/parser'
+
 module Milday
   VERSION = '0.0.1'.freeze
 end

@@ -2,7 +2,9 @@ require_relative '../milday'
 
 module Milday
   class VCard
-    attr_reader :name, :formatted_name, :organization, :gender
+    extend Core::Parser
+    
+    attr_reader :name, :formatted_name, :organization, :gender, :birthday
     
     def name=(parts)
       if parts.instance_of?(Name)
@@ -28,6 +30,10 @@ module Milday
     
     def gender=(value)
       @gender = value.is_a?(Gender) ? value : Gender.new(value)
+    end
+    
+    def birthday=(value)
+      @birthday = value.is_a?(Birthday) ? value : Birthday.new(value)
     end
     
     def emails
