@@ -15,4 +15,28 @@ require_relative 'milday/core/parser'
 
 module Milday
   VERSION = '0.0.1'.freeze
+  
+  def self.configuration
+    @configuration ||= Configuration.new
+  end
+  
+  def self.configure
+    yield(configuration)
+  end
+  
+  class Configuration
+    attr_accessor :product, :version, :language
+    
+    def product
+      @product ||= 'Milday www.hellotext.com'
+    end
+    
+    def version
+      @version ||= '3.0'
+    end
+    
+    def language
+      @language ||= 'EN'
+    end
+  end
 end
