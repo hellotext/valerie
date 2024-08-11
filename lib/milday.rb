@@ -5,6 +5,7 @@ require_relative 'milday/gender'
 require_relative 'milday/name'
 require_relative 'milday/organization'
 require_relative 'milday/phone'
+require_relative 'milday/vcard'
 
 module Milday
   VERSION = '0.0.1'.freeze
