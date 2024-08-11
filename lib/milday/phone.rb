@@ -14,8 +14,10 @@ module Milday
       new(identifier, **options)
     end
     
-    def initialize(tel, **options)
-      @tel = tel
+    attr_reader :number, :options
+    
+    def initialize(number, **options)
+      @number = number
       @options = options
       @type = @options[:type] || 'voice'
       
@@ -32,7 +34,7 @@ module Milday
       parts << "PERF=#{@options[:position]}" if position?
       parts << type_to_s if type?
       
-      parts.join(';') + ":#{@tel}"
+      parts.join(';') + ":#{@number}"
     end
     
     def to_h

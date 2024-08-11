@@ -29,5 +29,17 @@ module Milday
     def gender=(value)
       @gender = value.is_a?(Gender) ? value : Gender.new(value)
     end
+    
+    def emails
+      @emails ||= EmailCollection.new
+    end
+    
+    def addresses
+      @addresses ||= AddressCollection.new
+    end
+    
+    def phones
+      @phones ||= PhoneCollection.new
+    end
   end
 end

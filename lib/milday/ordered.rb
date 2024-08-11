@@ -8,6 +8,10 @@ module Milday
       @options[:position]
     end
     
+    def position=(value)
+      @options[:position] = value
+    end
+    
     def position?
       position
     end
