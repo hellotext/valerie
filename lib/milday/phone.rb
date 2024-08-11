@@ -1,6 +1,10 @@
+require_relative 'ordered'
+
 module Milday
   class Phone
     VALID_TYPES = %w[text voice fax cell video pager textphone].freeze
+    
+    include Ordered
     
     def self.from_s(data)
       data = data[data.index("TEL;")..] unless data.starts_with?("TEL;")
@@ -15,7 +19,7 @@ module Milday
       @options = options
       @type = @options[:type] || 'voice'
       
-      raise ArgumentError, 'Invalid Position' if position? && @options[:position].to_i < 1
+      raise ArgumentError, 'Invalid Position' if invalid_position?
     end
     
     def [](key)
@@ -40,10 +44,6 @@ module Milday
     end
     
     private
-      def position?
-        @options[:position]
-      end
-    
       def type?
         @options[:type]
       end
