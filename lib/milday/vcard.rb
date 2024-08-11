@@ -47,5 +47,37 @@ module Milday
     def phones
       @phones ||= PhoneCollection.new
     end
+    
+    def to_s
+      to_a.join("\r\n")
+    end
+    
+    def to_a
+      parts = [
+        'BEGIN:VCARD',
+        "VERSION:#{Milday.configuration.version}",
+        "PRODID:-//#{Milday.configuration.product}//#{Milday.configuration.language}",
+      ]
+      
+      parts << @name.to_s if @name
+      parts << @organization.to_s if @organization
+      parts << @birthday.to_s if @birthday
+      parts << @gender.to_s if @gender
+      
+      emails.each do |email|
+        parts << email.to_s
+      end
+      
+      phones.each do |phone|
+        parts << phone.to_s
+      end
+      
+      addresses.each do |address|
+        parts << address.to_s
+      end
+      
+      parts << 'END:VCARD'
+      parts
+    end
   end
 end
