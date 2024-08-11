@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'milday/birthday'
+require 'test_helper'
 
 class BirthdayTest < Minitest::Test
   def test_from_s

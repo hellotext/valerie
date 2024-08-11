@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'milday/organization'
+require 'test_helper'
 
 class OrganizationTest < Minitest::Test
   def test_new_constructor_with_array

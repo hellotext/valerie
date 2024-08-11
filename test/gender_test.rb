@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'milday/gender'
+require 'test_helper'
 
 class GenderTest < Minitest::Test
   def test_from_s
