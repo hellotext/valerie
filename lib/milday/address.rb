@@ -1,5 +1,9 @@
+require_relative 'ordered'
+
 module Milday
   class Address
+    include Ordered
+    
     def self.from_s(data)
       data = data[data.index("ADR;")..] unless data.starts_with?("ADR;")
       identifier = data.split(":").last.split(";")
@@ -26,6 +30,8 @@ module Milday
       @postal_code = postal_code
       @country = country
       @options = options
+      
+      raise ArgumentError, 'Invalid Position' if invalid_position?
     end
 
     def [](key)
@@ -33,7 +39,16 @@ module Milday
     end
 
     def to_s
-      "ADR;#{@options.map { "#{_1}=#{_2}" }.join(";")}:#{identifier}"
+      parts = ['ADR']
+      
+      parts << "PERF=#{position}" if position?
+      
+      @options.map do |key, value|
+        next if key == :position
+        parts << "#{key}=#{value}"
+      end
+      
+      parts.join(';') + ":#{identifier}"
     end
 
     def identifier
