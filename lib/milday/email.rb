@@ -1,5 +1,9 @@
+require_relative 'ordered'
+
 module Milday
   class Email
+    include Ordered
+    
     def self.from_s(data)
       data = data[data.index("EMAIL;")..] unless data.starts_with?("EMAIL;")
       identifier = data.split(":").last.split(";")
@@ -14,6 +18,8 @@ module Milday
     def initialize(address:, **options)
       @address = address
       @options = options
+      
+      raise ArgumentError, 'Invalid Position' if invalid_position?
     end
     
     def [](key)
@@ -23,7 +29,7 @@ module Milday
     def to_s
       parts = ['EMAIL']
       
-      parts << 'PERF=1' if preferred?
+      parts << "PERF=#{@options[:position]}" if position?
       parts << type_to_s if type?
       
       parts.join(';') + ":#{@address}"
@@ -32,16 +38,12 @@ module Milday
     def to_h
       {
         address: @address,
-        preferred: @options[:preferred],
+        position: @options[:position],
         type: @options[:type],
       }
     end
     
     private
-      def preferred?
-        @options[:preferred]
-      end
-      
       def type?
         @options[:type]
       end
