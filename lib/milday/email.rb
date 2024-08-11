@@ -15,6 +15,8 @@ module Milday
       )
     end
     
+    attr_reader :address, :options
+    
     def initialize(address:, **options)
       @address = address
       @options = options
