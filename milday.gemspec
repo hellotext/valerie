@@ -9,4 +9,5 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.0.0'
   
   s.add_development_dependency 'minitest'
+  s.add_development_dependency 'rake'
 end
