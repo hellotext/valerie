@@ -7,9 +7,9 @@ module Milday
     include Ordered
     
     def self.from_s(data)
-      data = data[data.index("TEL;")..] unless data.starts_with?("TEL;")
+      data = data[data.index("TEL;")..] unless data.start_with?("TEL;")
       identifier = data.split(":").last
-      options = data.gsub("TEL", "").split(":").first.split(";").map { _1.split("=") }.to_h
+      options = data.gsub("TEL", "").split(":").first.split(";").compact.filter { _1.to_s.include?('=')}.map { _1.downcase.split("=") }.to_h
       
       new(identifier, **options)
     end
@@ -18,7 +18,7 @@ module Milday
     
     def initialize(number, **options)
       @number = number
-      @options = options
+      @options = options.transform_keys!(&:to_sym)
       @type = @options[:type] || 'voice'
       
       raise ArgumentError, 'Invalid Position' if invalid_position?

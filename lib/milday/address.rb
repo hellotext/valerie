@@ -5,9 +5,9 @@ module Milday
     include Ordered
     
     def self.from_s(data)
-      data = data[data.index("ADR;")..] unless data.starts_with?("ADR;")
+      data = data[data.index("ADR;")..] unless data.start_with?("ADR;")
       identifier = data.split(":").last.split(";")
-      options = data.gsub("ADR", "").split(":").first.split(";").compact_blank.map { _1.split("=") }.to_h
+      options = data.gsub("ADR", "").split(":").first.split(";").compact.filter { _1.to_s.include?('=')}.map { _1.downcase.split("=") }.to_h
 
       new(
         post_office_box: identifier[0],

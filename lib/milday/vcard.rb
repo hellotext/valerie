@@ -38,15 +38,15 @@ module Milday
     end
     
     def emails
-      @emails ||= EmailCollection.new
+      @emails ||= Collection::EmailCollection.new
     end
     
     def addresses
-      @addresses ||= AddressCollection.new
+      @addresses ||= Collection::AddressCollection.new
     end
     
     def phones
-      @phones ||= PhoneCollection.new
+      @phones ||= Collection::PhoneCollection.new
     end
     
     def to_s

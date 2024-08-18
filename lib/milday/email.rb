@@ -5,9 +5,9 @@ module Milday
     include Ordered
     
     def self.from_s(data)
-      data = data[data.index("EMAIL;")..] unless data.starts_with?("EMAIL;")
+      data = data[data.index("EMAIL;")..] unless data.start_with?("EMAIL;")
       identifier = data.split(":").last.split(";")
-      options = data.gsub("EMAIL", "").split(":").first.split(";").compact_blank.map { _1.split("=") }.to_h
+      options = data.gsub("EMAIL", "").split(":").first.split(";").compact.filter { _1.to_s.include?('=')}.map { _1.downcase.split("=") }.to_h
       
       new(
         address: identifier[0],
