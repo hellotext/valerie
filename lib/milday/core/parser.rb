@@ -28,7 +28,7 @@ module Milday
               vcard.birthday = Birthday.from_s(birthday)
             end
             
-            if (gender = data.find { _1.starts_with?("GENDER:") })
+            if (gender = data.find { _1.start_with?("GENDER:") })
               vcard.gender = gender.split(":").last
             end
             
@@ -46,9 +46,11 @@ module Milday
           vcards = []
           vcard = []
           
+          puts unfold(str).inspect
+          
           unfold(str).each do |entry|
             if entry.include?("VERSION:")
-              vcards << from_a(vcard) unless vcard.blank?
+              vcards << from_a(vcard) unless vcard.empty?
               vcard = []
             else
               vcard << entry

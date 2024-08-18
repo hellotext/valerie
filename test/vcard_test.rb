@@ -46,4 +46,28 @@ class VCardTest < Minitest::Test
       @card.gender = 'invalid-identifier'
     end
   end
+  
+  def test_parsing_array
+    data = ['PRODID:-//Hellotext', 'N:Doe;John;;;', "ORG:HelloText;", "TEL;type=CELL:+598 94 000 000"]
+    
+    Milday::VCard.parse(data).tap do |vcard|
+      assert_equal(vcard.name.first_name, 'John')
+      assert_equal(vcard.name.last_name, 'Doe')
+      
+      assert_equal(vcard.organization.name, 'HelloText')
+      
+      assert_equal(vcard.phones.first.number, '+598 94 000 000')
+      assert_equal(vcard.phones.first.options[:type], 'cell')
+    end
+  end
+  
+  def test_parsing_string
+    data = "BEGIN:VCARD\r\nVERSION:3.0\r\nPRODID:-//Hellotext www.hellotext.com//EN\r\nN:Rosenbaum;Shira;;;\r\nTEL;:+598 94 987 924\r\nEND:VCARD"
+    
+    Milday::VCard.parse(data).first.tap do |vcard|
+      assert_equal(vcard.name.first_name, 'Shira')
+      assert_equal(vcard.name.last_name, 'Rosenbaum')
+      assert_equal(vcard.phones.first.number, '+598 94 987 924')
+    end
+  end
 end
