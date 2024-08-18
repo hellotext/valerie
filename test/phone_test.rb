@@ -1,4 +1,4 @@
-require 'test_helper'
+require_relative 'test_helper'
 
 class PhoneTest < Minitest::Test
   def test_to_s_with_single_type

@@ -1,4 +1,5 @@
 require_relative '../milday'
+require_relative 'core/parser'
 
 module Milday
   class VCard

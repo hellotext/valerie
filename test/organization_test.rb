@@ -1,4 +1,4 @@
-require 'test_helper'
+require_relative 'test_helper'
 
 class OrganizationTest < Minitest::Test
   def test_new_constructor_with_array
