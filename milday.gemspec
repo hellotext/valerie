@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.authors = ['Hellotext', 'Ahmed Khattab']
   s.files = 'lib/milday.rb'
 
-  s.required_ruby_version = '>= 3.0.0'
+  s.required_ruby_version = '>= 3.3.0'
   
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'rake'
