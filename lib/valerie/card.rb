@@ -2,7 +2,7 @@ require_relative '../valerie'
 require_relative 'core/parser'
 
 module Valerie
-  class VCard
+  class Card
     extend Core::Parser
     
     attr_reader :name, :formatted_name, :organization, :gender, :birthday

@@ -5,7 +5,7 @@ require_relative 'valerie/gender'
 require_relative 'valerie/name'
 require_relative 'valerie/organization'
 require_relative 'valerie/phone'
-require_relative 'valerie/vcard'
+require_relative 'valerie/card'
 
 require_relative 'valerie/collection/email_collection'
 require_relative 'valerie/collection/address_collection'

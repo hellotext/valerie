@@ -15,7 +15,7 @@ module Valerie
       
       private
         def from_a(data)
-          VCard.new.tap do |vcard|
+          Card.new.tap do |vcard|
             if (name = data.find { _1.start_with?("N:") })
               vcard.name = Name.from_s name.split(":").last
             end
