@@ -139,6 +139,22 @@ card.emails.add('user@domain.com', type: 'work')
 card.emails.add('user@domain.com', type: %w[work internet])
 ```
 
+### Configuration 
+
+You can configure the following properties of the card. 
+
+- `prodid`: The product id of the card. This defaults to 'Valerie www.hellotext.com'.
+- `version`: The version of the card. This defaults to '3.0'.
+- 'language': The language of the card. This defaults to 'en'.
+
+```ruby
+Valerie.configure do |config|
+  config.product = 'Valerie www.hellotext.com'
+  config.version = '3.0'
+  config.language = 'en'
+end
+```
+
 ### Licence
 
 This code is released under the MIT License. See the LICENSE file for more information.
