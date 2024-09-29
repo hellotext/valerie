@@ -1,6 +1,6 @@
 require 'date'
 
-module Milday
+module Valerie
   class Birthday
     def self.from_s(data)
       new data.gsub("BDAY:", "")

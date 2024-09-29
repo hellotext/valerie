@@ -1,7 +1,7 @@
-require_relative '../milday'
+require_relative '../valerie'
 require_relative 'core/parser'
 
-module Milday
+module Valerie
   class VCard
     extend Core::Parser
     
@@ -56,8 +56,8 @@ module Milday
     def to_a
       parts = [
         'BEGIN:VCARD',
-        "VERSION:#{Milday.configuration.version}",
-        "PRODID:-//#{Milday.configuration.product}//#{Milday.configuration.language}",
+        "VERSION:#{Valerie.configuration.version}",
+        "PRODID:-//#{Valerie.configuration.product}//#{Valerie.configuration.language}",
       ]
       
       parts << @name.to_s if @name

@@ -1,6 +1,6 @@
 require_relative 'ordered'
 
-module Milday
+module Valerie
   class Address
     include Ordered
     

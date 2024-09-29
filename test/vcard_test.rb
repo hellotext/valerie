@@ -3,7 +3,7 @@ require_relative 'test_helper'
 class VCardTest < Minitest::Test
   def initialize(name)
     super
-    @card = Milday::VCard.new
+    @card = Valerie::VCard.new
   end
   
   def test_setting_name_with_hash_parameter
@@ -50,7 +50,7 @@ class VCardTest < Minitest::Test
   def test_parsing_array
     data = ['PRODID:-//Hellotext', 'N:Doe;John;;;', "ORG:HelloText;", "TEL;type=CELL:+598 94 000 000"]
     
-    Milday::VCard.parse(data).tap do |vcard|
+    Valerie::VCard.parse(data).tap do |vcard|
       assert_equal(vcard.name.first_name, 'John')
       assert_equal(vcard.name.last_name, 'Doe')
       
@@ -64,7 +64,7 @@ class VCardTest < Minitest::Test
   def test_parsing_string
     data = "BEGIN:VCARD\r\nVERSION:3.0\r\nPRODID:-//Hellotext www.hellotext.com//EN\r\nN:Rosenbaum;Shira;;;\r\nTEL;:+598 94 987 924\r\nEND:VCARD"
     
-    Milday::VCard.parse(data).first.tap do |vcard|
+    Valerie::VCard.parse(data).first.tap do |vcard|
       assert_equal(vcard.name.first_name, 'Shira')
       assert_equal(vcard.name.last_name, 'Rosenbaum')
       assert_equal(vcard.phones.first.number, '+598 94 987 924')

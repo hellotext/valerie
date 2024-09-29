@@ -1,4 +1,4 @@
-module Milday
+module Valerie
   module Collection
     class Base
       include Enumerable

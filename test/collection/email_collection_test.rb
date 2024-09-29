@@ -2,13 +2,13 @@ require_relative '../test_helper'
 
 class EmailCollectionTest < Minitest::Test
   def setup
-    @collection = Milday::Collection::EmailCollection.new
+    @collection = Valerie::Collection::EmailCollection.new
   end
   
   def test_add_email_as_string
     email = @collection.add('ahmed@hellotext.com', type: :work)
     
-    assert_instance_of(Milday::Email, email)
+    assert_instance_of(Valerie::Email, email)
     
     assert_equal(email.address, 'ahmed@hellotext.com')
     assert_equal(email[:type], :work)
@@ -17,13 +17,13 @@ class EmailCollectionTest < Minitest::Test
   def test_add_email_as_hash
     email = @collection.add({ address: 'john@hellotext.com', type: :home })
     
-    assert_instance_of(Milday::Email, email)
+    assert_instance_of(Valerie::Email, email)
     assert_equal(email.address, 'john@hellotext.com')
     assert_equal(email[:type], :home)
   end
   
   def test_add_email_as_email_object
-    email = Milday::Email.new(address: 'ahmed@hellotext.com', type: :work)
+    email = Valerie::Email.new(address: 'ahmed@hellotext.com', type: :work)
     @collection.add({ address: 'john@hellotext.com', type: :home })
     
     assert_equal(@collection.add(email).position, 2)

@@ -1,6 +1,6 @@
 require_relative 'ordered'
 
-module Milday
+module Valerie
   class Phone
     VALID_TYPES = %w[text voice fax cell video pager textphone].freeze
     

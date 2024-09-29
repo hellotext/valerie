@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '../lib/milday'
+require_relative '../lib/valerie'
 
 module Minitest::Assertions
   def assert_runs_without_errors(*)

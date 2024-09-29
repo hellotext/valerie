@@ -1,4 +1,4 @@
-module Milday
+module Valerie
   class Name
     class << self
       def new(parts)

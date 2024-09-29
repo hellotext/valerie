@@ -1,7 +1,7 @@
 require_relative 'collection'
 require_relative '../address'
 
-module Milday
+module Valerie
   module Collection
     class AddressCollection < Base
       def add(address, **options)

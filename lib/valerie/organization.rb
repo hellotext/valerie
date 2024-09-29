@@ -1,4 +1,4 @@
-module Milday
+module Valerie
   class Organization
     attr_reader :name, :department
     

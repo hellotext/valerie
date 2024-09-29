@@ -1,4 +1,4 @@
-module Milday
+module Valerie
   class Gender
     SEX_COMPONENTS = {
       male: 'M',

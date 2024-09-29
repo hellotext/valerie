@@ -1,4 +1,4 @@
-module Milday
+module Valerie
   module Ordered
     def invalid_position?
       position? && position.to_i < 1

@@ -1,7 +1,7 @@
 require_relative 'collection'
 require_relative '../email'
 
-module Milday
+module Valerie
   module Collection
     class EmailCollection < Base
       def add(email, **options)

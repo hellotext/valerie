@@ -1,7 +1,7 @@
 require_relative 'collection'
 require_relative '../phone'
 
-module Milday
+module Valerie
   module Collection
     class PhoneCollection < Base
       def add(phone, **options)

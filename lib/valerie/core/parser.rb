@@ -1,6 +1,6 @@
-require_relative '../../milday'
+require_relative '../../valerie'
 
-module Milday
+module Valerie
   module Core
     module Parser
       def parse(data)
@@ -45,8 +45,6 @@ module Milday
         def from_s(str)
           vcards = []
           vcard = []
-          
-          puts unfold(str).inspect
           
           unfold(str).each do |entry|
             if entry.include?("VERSION:")
