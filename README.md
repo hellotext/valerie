@@ -3,6 +3,20 @@
 This is a simple VCard parser and generator extracted from Hellotext.
 It implements the VCard 3.0 specification. It supports all of the cases we want to use in Hellotext.
 
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'valerie'
+```
+
+Or install it yourself as: 
+
+```bash
+gem install valerie
+```
+
 ## Usage
 
 Parsing a VCard is as simple as passing a VCard string, like 
