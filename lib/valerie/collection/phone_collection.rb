@@ -5,13 +5,16 @@ module Valerie
   module Collection
     class PhoneCollection < Base
       def add(phone, **options)
-        if phone.is_a?(Phone)
-          @items << phone.dup.tap { _1.position = options[:position] || @items.size + 1 }
+        @item = if phone.is_a?(Phone)
+          phone.dup.tap { _1.position = options[:position] || @items.size + 1 }
         else
-          @items << Phone.new(phone, **options, position: options[:position] || @items.size + 1)
+          Phone.new(phone, **options, position: options[:position] || @items.size + 1)
         end
         
-        @items.last
+        @items << @item
+        @items = @items.sort_by(&:position)
+        
+        @item
       end
     end
   end

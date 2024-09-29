@@ -5,11 +5,16 @@ module Valerie
   module Collection
     class AddressCollection < Base
       def add(address, **options)
-        if address.is_a?(Address)
-          @items << address.dup { _1.position = options[:position] || @items.size + 1 }
+        @item = if address.is_a?(Address)
+          address.dup { _1.position = options[:position] || @items.size + 1 }
         else
-          @items << Address.new(**address, **options)
+          Address.new(**address, **options)
         end
+      
+        @items << @item
+        @items = @items.sort_by(&:position)
+        
+        @item
       end
     end
   end
