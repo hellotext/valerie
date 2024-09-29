@@ -159,7 +159,7 @@ You can configure the following properties of the card.
 
 - `prodid`: The product id of the card. This defaults to 'Valerie www.hellotext.com'.
 - `version`: The version of the card. This defaults to '3.0'.
-- 'language': The language of the card. This defaults to 'en'.
+- `language``: The language of the card. This defaults to 'en'.
 
 ```ruby
 Valerie.configure do |config|
