@@ -5,6 +5,8 @@ Gem::Specification.new do |s|
   s.description = 'VCard (Contact Card) parser and generator.'
   s.authors = ['Hellotext', 'Ahmed Khattab']
   s.files = 'lib/valerie.rb'
+  s.homepage = 'https://github.com/hellotext/valerie'
+  s.license = 'MIT'
 
   s.required_ruby_version = '>= 3.3.0'
   
