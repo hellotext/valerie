@@ -62,7 +62,6 @@ module Valerie
         
         UNTERMINATED_QUOTED_PRINTABLE = /ENCODING=QUOTED-PRINTABLE:.*=$/
         
-        # Borrowed from https://github.com/brewster/vcardigan
         def unfold(vcard)
           unfolded = []
           

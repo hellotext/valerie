@@ -173,6 +173,10 @@ end
 
 This code is released under the MIT License. See the LICENSE file for more information.
 
+### Acknowledgements
+
+- [VCardigan](https://github.com/brewster/vcardigan)
+
 ### Contributing
 
 Contributions are welcome. Please follow the steps below to contribute.
