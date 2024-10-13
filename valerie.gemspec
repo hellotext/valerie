@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name = 'valerie'
-  s.version = '0.0.6'
+  s.version = '0.0.7'
   s.summary = 'Easily parse and generate VCard (Contact Card) objects that can be exported to other systems with ease.'
   s.description = 'VCard (Contact Card) parser and generator.'
   s.authors = ['Hellotext', 'Ahmed Khattab']
-  s.files = 'lib/valerie.rb'
+  s.files = Dir.glob('lib/**/*.rb') + Dir.glob('test/**/*.rb') + %w[Rakefile README.md]
   s.require_paths = ['lib']
   s.homepage = 'https://github.com/hellotext/valerie'
   s.license = 'MIT'

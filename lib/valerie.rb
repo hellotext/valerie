@@ -12,7 +12,7 @@ require 'valerie/collection/address_collection'
 require 'valerie/collection/phone_collection'
 
 module Valerie
-  VERSION = '0.0.6'.freeze
+  VERSION = '0.0.7'.freeze
   
   def self.configuration
     @configuration ||= Configuration.new
