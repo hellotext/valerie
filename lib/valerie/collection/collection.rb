@@ -25,7 +25,17 @@ module Valerie
         !blank?
       end
       
-      delegate :empty?, :size, :length, to: :items
+      def size
+        @items.size
+      end
+      
+      def count
+        @items.count
+      end
+      
+      def length
+        @items.length
+      end
     end
   end
 end
