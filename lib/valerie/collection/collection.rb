@@ -16,6 +16,16 @@ module Valerie
       def add
         raise NotImplementedError
       end
+      
+      def blank?
+        @items.empty?
+      end
+      
+      def present?
+        !blank?
+      end
+      
+      delegate :empty?, :size, :length, to: :items
     end
   end
 end
