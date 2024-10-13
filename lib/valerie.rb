@@ -1,15 +1,15 @@
-require_relative 'valerie/address'
-require_relative 'valerie/birthday'
-require_relative 'valerie/email'
-require_relative 'valerie/gender'
-require_relative 'valerie/name'
-require_relative 'valerie/organization'
-require_relative 'valerie/phone'
-require_relative 'valerie/card'
+require 'valerie/address'
+require 'valerie/birthday'
+require 'valerie/email'
+require 'valerie/gender'
+require 'valerie/name'
+require 'valerie/organization'
+require 'valerie/phone'
+require 'valerie/card'
 
-require_relative 'valerie/collection/email_collection'
-require_relative 'valerie/collection/address_collection'
-require_relative 'valerie/collection/phone_collection'
+require 'valerie/collection/email_collection'
+require 'valerie/collection/address_collection'
+require 'valerie/collection/phone_collection'
 
 module Valerie
   VERSION = '0.0.1'.freeze
