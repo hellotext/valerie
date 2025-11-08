@@ -2,8 +2,6 @@ require_relative 'ordered'
 
 module Valerie
   class Phone
-    VALID_TYPES = %w[text voice fax cell video pager textphone].freeze
-
     include Ordered
 
     def self.from_s(data)
@@ -31,7 +29,7 @@ module Valerie
     def to_s
       parts = ['TEL']
 
-      parts << "PERF=#{@options[:position]}" if position?
+      parts << "PREF=#{@options[:position]}" if position?
       parts << type_to_s if type?
 
       parts.join(';') + ":#{@number}"

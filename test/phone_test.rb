@@ -23,7 +23,7 @@ class PhoneTest < Minitest::Test
 
   def test_to_s_with_position
     Valerie::Phone.new('01000000000', type: :voice, position: 1).tap do |phone|
-      assert_equal(phone.to_s, 'TEL;PERF=1;TYPE=voice:01000000000')
+      assert_equal(phone.to_s, 'TEL;PREF=1;TYPE=voice:01000000000')
     end
   end
 

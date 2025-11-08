@@ -3,7 +3,7 @@ require_relative 'ordered'
 module Valerie
   class Address
     include Ordered
-    
+
     def self.from_s(data)
       data = data[data.index("ADR;")..] unless data.start_with?("ADR;")
       identifier = data.split(":").last.split(";")
@@ -30,7 +30,7 @@ module Valerie
       @postal_code = postal_code
       @country = country
       @options = options
-      
+
       raise ArgumentError, 'Invalid Position' if invalid_position?
     end
 
@@ -40,14 +40,14 @@ module Valerie
 
     def to_s
       parts = ['ADR']
-      
-      parts << "PERF=#{position}" if position?
-      
+
+      parts << "PREF=#{position}" if position?
+
       @options.map do |key, value|
         next if key == :position
         parts << "#{key}=#{value}"
       end
-      
+
       parts.join(';') + ":#{identifier}"
     end
 
