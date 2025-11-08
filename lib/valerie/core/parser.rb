@@ -2,7 +2,22 @@ require_relative '../../valerie'
 
 module Valerie
   module Core
+    # Parser module for VCard data
+    # @api private
     module Parser
+      # Parse VCard data from string or array format
+      #
+      # @param data [String, Array<String>] VCard data to parse
+      # @return [Array<Card>, Card] Parsed card(s)
+      #   - Returns Array<Card> when parsing from string
+      #   - Returns single Card when parsing from array
+      # @raise [ArgumentError] if data is neither String nor Array
+      # @note The return type inconsistency is a known issue
+      # @example Parse from string
+      #   cards = Valerie::Card.parse("BEGIN:VCARD\r\n...")
+      #   card = cards.first
+      # @example Parse from array
+      #   card = Valerie::Card.parse(['N:Doe;John', 'TEL;:555-1234'])
       def parse(data)
         if data.instance_of?(String)
           from_s(data)
