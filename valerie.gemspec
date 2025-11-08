@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'valerie'
-  s.version = '0.0.8'
+  s.version = '1.0.0'
   s.summary = 'Easily parse and generate VCard (Contact Card) objects that can be exported to other systems with ease.'
   s.description = 'VCard (Contact Card) parser and generator.'
   s.authors = ['Hellotext', 'Ahmed Khattab']
@@ -13,4 +13,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'minitest', '~> 5.14'
   s.add_development_dependency 'rake', '~> 13.0'
+  s.add_development_dependency 'yard', '~> 0.9'
 end

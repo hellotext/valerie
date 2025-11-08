@@ -2,7 +2,22 @@ require_relative '../../valerie'
 
 module Valerie
   module Core
+    # Parser module for VCard data
+    # @api private
     module Parser
+      # Parse VCard data from string or array format
+      #
+      # @param data [String, Array<String>] VCard data to parse
+      # @return [Array<Card>, Card] Parsed card(s)
+      #   - Returns Array<Card> when parsing from string
+      #   - Returns single Card when parsing from array
+      # @raise [ArgumentError] if data is neither String nor Array
+      # @note The return type inconsistency is a known issue
+      # @example Parse from string
+      #   cards = Valerie::Card.parse("BEGIN:VCARD\r\n...")
+      #   card = cards.first
+      # @example Parse from array
+      #   card = Valerie::Card.parse(['N:Doe;John', 'TEL;:555-1234'])
       def parse(data)
         if data.instance_of?(String)
           from_s(data)
@@ -12,40 +27,48 @@ module Valerie
           raise ArgumentError, "Expected String or Array, got #{data.class}"
         end
       end
-      
+
       private
         def from_a(data)
           Card.new.tap do |vcard|
             if (name = data.find { _1.start_with?("N:") })
               vcard.name = Name.from_s name.split(":").last
             end
-            
+
+            if (formatted_name = data.find { _1.start_with?("FN:") })
+              vcard.instance_variable_set(:@formatted_name, formatted_name.split(":", 2).last)
+            end
+
             if (organization = data.find { _1.start_with?("ORG:") })
               vcard.organization = Organization.from_s(organization)
             end
-            
+
             if (birthday = data.find { _1.start_with?("BDAY:") })
               vcard.birthday = Birthday.from_s(birthday)
             end
-            
+
             if (gender = data.find { _1.start_with?("GENDER:") })
               vcard.gender = gender.split(":").last
             end
-            
+
             data.select { _1.include?("TEL;") }.each do |phone|
               vcard.phones.add(Phone.from_s(phone))
             end
-            
+
             data.select { _1.start_with?("EMAIL;") }.each do |email|
               vcard.emails.add(Email.from_s(email))
             end
+
+            data.select { _1.start_with?("ADR;") }.each do |address|
+              vcard.addresses.add(Address.from_s(address))
+            end
           end
         end
-        
+
         def from_s(str)
           vcards = []
           vcard = []
-          
+
           unfold(str).each do |entry|
             if entry.include?("VERSION:")
               vcards << from_a(vcard) unless vcard.empty?
@@ -54,17 +77,17 @@ module Valerie
               vcard << entry
             end
           end
-          
+
           vcards << from_a(vcard)
-          
+
           vcards
         end
-        
+
         UNTERMINATED_QUOTED_PRINTABLE = /ENCODING=QUOTED-PRINTABLE:.*=$/
-        
+
         def unfold(vcard)
           unfolded = []
-          
+
           prior_line = nil
           vcard.lines do |line|
             line.chomp!
@@ -82,7 +105,7 @@ module Valerie
             end
             prior_line = unfolded[-1]
           end
-          
+
           unfolded
         end
     end

@@ -11,7 +11,7 @@ Add this line to your application's Gemfile:
 gem 'valerie'
 ```
 
-Or install it yourself as: 
+Or install it yourself as:
 
 ```bash
 gem install valerie
@@ -19,7 +19,7 @@ gem install valerie
 
 ## Usage
 
-Parsing a VCard is as simple as passing a VCard string, like 
+Parsing a VCard is as simple as passing a VCard string, like
 
 ```ruby
 data = "BEGIN:VCARD\r\nVERSION:3.0\r\nPRODID:-//Hellotext www.hellotext.com//EN\r\nN:Rosenbaum;Shira;;;\r\nTEL;:+598 00 000 00\r\nEND:VCARD"
@@ -42,8 +42,7 @@ According to the VCard 3.0 specification, some types of properties can have mult
 - `TEL`: for telephone numbers
 - `ADR`: for addresses
 
-Aside from these, every other support property supports a single value. 
-
+Aside from these, every other support property supports a single value.
 
 ### Single value properties
 
@@ -69,9 +68,9 @@ Or an array with the following order `[first_name, last_name, middle_name, prefi
 card.name = %w[Shira Rosenbaum M Ms. PhD]
 ```
 
-#### Gender 
+#### Gender
 
-To set the Gender of the card you can, set it value `Card#gender=`, this accepts one of the following constants: 
+To set the Gender of the card you can, set it value `Card#gender=`, this accepts one of the following constants:
 `male`, `female`, `other`, `none` and `unknown`. Passing another value raises an `ArgumentError`.
 
 ```ruby
@@ -97,7 +96,7 @@ card.organization = { organization: 'Hellotext', department: 'Engineering' }
 card.organization = 'Hellotext'
 ```
 
-### Collections 
+### Collections
 
 The card exposes methods to adding the respective collectable properties. Email, telephone and address.
 
@@ -129,11 +128,11 @@ card.addresses.add(
 )
 ```
 
-#### Positions 
+#### Positions
 
-Emails, phones and addresses are ordered. They can include an optional `position` argument 
+Emails, phones and addresses are ordered. They can include an optional `position` argument
 to specify their order when the profile has multiple values. Whenever you add a new value,
-a default position argument is picked and the value is appended as the last element. 
+a default position argument is picked and the value is appended as the last element.
 
 To specify the position, you can pass the `position` argument as a keyword argument. Unlike arrays
 the position is 1-based and not 0-based.
@@ -153,9 +152,9 @@ card.emails.add('user@domain.com', type: 'work')
 card.emails.add('user@domain.com', type: %w[work internet])
 ```
 
-### Configuration 
+### Configuration
 
-You can configure the following properties of the card. 
+You can configure the following properties of the card.
 
 - `prodid`: The product id of the card. This defaults to 'Valerie www.hellotext.com'.
 - `version`: The version of the card. This defaults to '3.0'.
@@ -169,6 +168,24 @@ Valerie.configure do |config|
 end
 ```
 
+### Documentation
+
+Valerie uses [YARD](https://yardoc.org/) for API documentation. To generate the documentation locally:
+
+```bash
+# Install dependencies
+bundle install
+
+# Generate documentation
+bundle exec rake yard
+
+# Or generate and view
+bundle exec rake doc
+open doc/index.html
+```
+
+The documentation covers all public APIs with examples and usage information.
+
 ### Licence
 
 This code is released under the MIT License. See the LICENSE file for more information.
@@ -181,7 +198,7 @@ This code is released under the MIT License. See the LICENSE file for more infor
 
 Contributions are welcome. Please follow the steps below to contribute.
 
-1. Fork it 
+1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
