@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'valerie'
-  s.version = '0.0.8'
+  s.version = '1.0.0'
   s.summary = 'Easily parse and generate VCard (Contact Card) objects that can be exported to other systems with ease.'
   s.description = 'VCard (Contact Card) parser and generator.'
   s.authors = ['Hellotext', 'Ahmed Khattab']
