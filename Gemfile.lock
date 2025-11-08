@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    valerie (0.0.8)
+    valerie (1.0.0)
 
 GEM
   remote: https://rubygems.org/
